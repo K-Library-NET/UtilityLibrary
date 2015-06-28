@@ -101,7 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SystemEnv.dll" />
-    <None Include="SystemEnv.tlh" />
+    <None Include="SystemEnv.tlh">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
