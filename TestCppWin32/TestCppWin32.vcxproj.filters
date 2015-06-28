@@ -34,7 +34,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SystemEnv.tlh" />
     <None Include="SystemEnv.dll" />
+    <None Include="..\SystemEnv\bin\Release\SystemEnv.tlb" />
   </ItemGroup>
 </Project>
