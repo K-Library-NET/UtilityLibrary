@@ -8,6 +8,7 @@ using System.EnterpriseServices;
 namespace SystemEnv
 {
     // 接口声明 
+    [ComVisible(true)]
     [Guid("7103C10A-2072-49fc-AD61-475BEE1C5FBB")]
     public interface ComInteropInterface
     {

@@ -3,33 +3,47 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <atlbase.h>
+#include <atlcom.h>
 using namespace std;
 
-#pragma once 
 //REGASM  SystemEnv.dll /tlb SystemEnv.tlh
 //REGASM  /u SystemEnv.dll
-#import "SystemEnv.tlh"
-//using namespace SystemEnv;
-#pragma managed 
+#import "E:\MyDatas\我的文档\GitHubVisualStudio\UtilityLibrary\TestCppWin32\SystemEnv.tlb" named_guids raw_interfaces_only
+//using namespace SystemEnv; 
 
-int _tmain(int argc, _TCHAR* argv[])
+void _tmain(int argc, _TCHAR* argv[])
 {
 	HRESULT hr;
 	// 初始化COM 
 	CoInitialize(NULL);
-	// 创建智能指针ComInteropDemo::ComInteropInterface 
-	SystemEnv::ComInterop ptr;
 
-	// 创建实例 
-	hr = ptr.CreateInstance(__uuidof (SystemEnv::ComInterop));
+	//// <namespace>::<InterfaceName>
+	SystemEnv::ComInteropInterfacePtr pDotNetCOMPtr;
 
-	if (hr == S_OK)
+	// CreateInstance parameters
+	// e.g. CreateInstance (<namespace::CLSID_<ClassName>)
+	HRESULT hRes = pDotNetCOMPtr.CreateInstance(__uuidof(SystemEnv::ComInterop));
+	if (hRes == S_OK)
 	{
- 		cout << ptr -> ToString();
+		BSTR str;
+		pDotNetCOMPtr -> GetSystemInfo(&str);
+		std::cout << str;
+		//call .NET COM exported function ShowDialog ()
 	}
 
-	CoUninitialize();
 
-	return 0;
+	//// 创建智能指针ComInteropDemo::ComInteropInterface 
+	//CComPtr<SystemEnv::ComInteropInterface> ptr;
+
+	//// 创建实例  
+	//if (SUCCEEDED(ptr.CoCreateInstance(__uuidof(SystemEnv::ComInteropInterface))))
+	//{
+	//	cout << ptrToString();
+	//}
+
+	//int *result; 
+
+	//return 0;
 }
 
