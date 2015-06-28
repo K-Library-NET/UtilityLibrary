@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace SystemEnv
@@ -36,5 +37,32 @@ namespace SystemEnv
             this.FileName = fileName;
         }
 
+        public static readonly char Seperator = ',';
+
+        public static string AllProcessNamesToString()
+        {
+            return AllProcessNamesToString(Seperator);
+        }
+
+        public static string AllProcessNamesToString(char seperator)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            try
+            {
+                Process[] processes = Process.GetProcesses();
+                foreach (Process p in processes)
+                {
+                    builder.Append(p.ProcessName);
+                    builder.Append(seperator);
+                }
+            }
+            catch (Exception ex)
+            {
+                builder.Append("系统诊断工具获取进程信息发生异常：" + ex.Message + "\t" + ex.StackTrace);
+            }
+
+            return builder.ToString().Trim(seperator);
+        }
     }
 }

@@ -14,7 +14,6 @@ namespace Test
             string sysInfo = new SystemEnv.SystemInfo().ToString();
             Console.WriteLine(sysInfo);
 
-
             //下载
             IHttpFtpProtocolParameters protocolParameters = new HttpFtpProtocolParametersSettingsProxy();
             protocolParameters.UseProxy = false;

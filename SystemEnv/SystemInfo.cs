@@ -1,11 +1,11 @@
-﻿using System; 
-using System.Collections.Generic; 
-using System.Diagnostics; 
-using System.Threading; 
-using System.IO; 
-using System.Text; 
-using System.Management; 
-using System.Runtime.InteropServices; 
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
+using System.IO;
+using System.Text;
+using System.Management;
+using System.Runtime.InteropServices;
 using System.Collections;
 
 namespace SystemEnv
@@ -139,20 +139,20 @@ namespace SystemEnv
         ///  
         /// 获取分区信息 
         ///  
-        public List<DiskInfo> GetLogicalDrives() 
-        { 
-            List<DiskInfo> drives = new List<DiskInfo>(); 
-            ManagementClass diskClass = new ManagementClass("Win32_LogicalDisk"); 
-            ManagementObjectCollection disks = diskClass.GetInstances(); 
-            foreach (ManagementObject disk in disks) 
-            { 
+        public List<DiskInfo> GetLogicalDrives()
+        {
+            List<DiskInfo> drives = new List<DiskInfo>();
+            ManagementClass diskClass = new ManagementClass("Win32_LogicalDisk");
+            ManagementObjectCollection disks = diskClass.GetInstances();
+            foreach (ManagementObject disk in disks)
+            {
                 // DriveType.Fixed 为固定磁盘(硬盘) 
-                if (int.Parse(disk["DriveType"].ToString()) == (int)DriveType.Fixed) 
-                { 
-                    drives.Add(new DiskInfo(disk["Name"].ToString(), long.Parse(disk["Size"].ToString()), long.Parse(disk["FreeSpace"].ToString()))); 
-                } 
-            } 
-            return drives; 
+                if (int.Parse(disk["DriveType"].ToString()) == (int)DriveType.Fixed)
+                {
+                    drives.Add(new DiskInfo(disk["Name"].ToString(), long.Parse(disk["Size"].ToString()), long.Parse(disk["FreeSpace"].ToString())));
+                }
+            }
+            return drives;
         }
         ///  
         /// 获取特定分区信息 
@@ -272,10 +272,33 @@ namespace SystemEnv
         }
         #endregion
 
-        public override string ToString() {
+        /// <summary>
+        /// 当前系统信息。
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return this.ToString(true);
+        }
+
+        /// <summary>
+        /// 当前系统信息。
+        /// </summary>
+        /// <param name="withProcessNames">是否包含当前所有进程名称。</param>
+        /// <returns></returns>
+        public string ToString(bool withProcessNames)
+        {
             float physicalMemory = (float)(PhysicalMemory / 1024 / 1024 / 1024);
-            float memoryLoad = ((float)(PhysicalMemory-MemoryAvailable) / PhysicalMemory)*100;
-            return String.Format("ProcessorCount={0},CpuLoad={1:F2}%,PhysicalMemory={2:F1}GB,MemoryLoad={3:F2}%,OS:{4}", ProcessorCount, CpuLoad, physicalMemory, memoryLoad, Environment.OSVersion);
+            float memoryLoad = ((float)(PhysicalMemory - MemoryAvailable) / PhysicalMemory) * 100;
+            string result = String.Format("ProcessorCount={0},CpuLoad={1:F2}%,PhysicalMemory={2:F1}GB,MemoryLoad={3:F2}%,OS:{4}",
+                ProcessorCount, CpuLoad, physicalMemory, memoryLoad, Environment.OSVersion);
+
+            if (withProcessNames)
+            {
+                result += "\tAllProcessNames:" + ProcessInfo.AllProcessNamesToString();
+            }
+
+            return result;
         }
     }
 }
