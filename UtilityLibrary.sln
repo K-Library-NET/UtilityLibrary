@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemEnv", "SystemEnv\SystemEnv.csproj", "{DE51E8FC-7494-4BE1-8A5A-F718FCB286F2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDownloader.Core", "MyDownloader.Core\MyDownloader.Core.csproj", "{E763345E-6696-4C53-8764-47E4ABD67DEF}"
@@ -8,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDownloader.Extension", "MyDownloader.Extension\MyDownloader.Extension.csproj", "{FEA18B6C-491F-401A-A06B-AE47888FF288}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{50813292-8114-4F19-8009-D526ACB9E12D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestCppWin32", "TestCppWin32\TestCppWin32.vcxproj", "{90D7D474-1A65-46C4-90C2-4338910BC5F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +63,16 @@ Global
 		{50813292-8114-4F19-8009-D526ACB9E12D}.Release|Mixed Platforms.Build.0 = Release|x86
 		{50813292-8114-4F19-8009-D526ACB9E12D}.Release|x86.ActiveCfg = Release|x86
 		{50813292-8114-4F19-8009-D526ACB9E12D}.Release|x86.Build.0 = Release|x86
+		{90D7D474-1A65-46C4-90C2-4338910BC5F2}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{90D7D474-1A65-46C4-90C2-4338910BC5F2}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{90D7D474-1A65-46C4-90C2-4338910BC5F2}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{90D7D474-1A65-46C4-90C2-4338910BC5F2}.Debug|x86.ActiveCfg = Debug|Win32
+		{90D7D474-1A65-46C4-90C2-4338910BC5F2}.Debug|x86.Build.0 = Debug|Win32
+		{90D7D474-1A65-46C4-90C2-4338910BC5F2}.Release|Any CPU.ActiveCfg = Release|Win32
+		{90D7D474-1A65-46C4-90C2-4338910BC5F2}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{90D7D474-1A65-46C4-90C2-4338910BC5F2}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{90D7D474-1A65-46C4-90C2-4338910BC5F2}.Release|x86.ActiveCfg = Release|Win32
+		{90D7D474-1A65-46C4-90C2-4338910BC5F2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
